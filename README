@@ -1,11 +1,18 @@
 NAME
-    Maypole::PSGI -
+    Maypole::PSGI - Runs Maypole application as PSGI application
 
 SYNOPSIS
+      # in app.psgi
+      use BeerDB;
       use Maypole::PSGI;
 
+      my $handler = sub { Maypole::PSGI->run('BeerDB', @_) };
+
 DESCRIPTION
-    Maypole::PSGI is
+    Maypole::PSGI is an Maypole adapter to run Maypole application on any
+    PSGI server. It uses CGI::PSGI and then wrap CGI::Maypole and does some
+    really wacky hack to adapt Maypole's hardcoded dispatcher list, but it
+    works :)
 
 AUTHOR
     Tatsuhiko Miyagawa <miyagawa@bulknews.net>
@@ -15,3 +22,5 @@ LICENSE
     under the same terms as Perl itself.
 
 SEE ALSO
+    Maypole CGI::PSGI
+
