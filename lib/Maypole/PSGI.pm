@@ -6,8 +6,8 @@ our $VERSION = '0.01';
 
 use UNIVERSAL::require;
 
-sub run {
-    my($class, $module, $env) = @_;
+sub new {
+    my($class, $module) = @_;
 
     $module->require or die "Couldn't load $module: $@";
 
@@ -18,7 +18,12 @@ sub run {
         $_ = "Maypole::PSGI::Application" if $_ eq 'CGI::Maypole';
     }
 
-    $module->run_psgi($env);
+    bless { module => $module }, $class;
+}
+
+sub run {
+    my($self, $env) = @_;
+    $self->{module}->run_psgi($env);
 }
 
 package Maypole::PSGI::Application;
@@ -110,7 +115,8 @@ Maypole::PSGI - Runs Maypole application as PSGI application
   use BeerDB;
   use Maypole::PSGI;
 
-  my $handler = sub { Maypole::PSGI->run('BeerDB', @_) };
+  my $app = Maypole::PSGI->new('BeerDB');
+  my $handler = sub { $app->run(@_) };
 
 =head1 DESCRIPTION
 
