@@ -1,0 +1,17 @@
+NAME
+    Maypole::PSGI -
+
+SYNOPSIS
+      use Maypole::PSGI;
+
+DESCRIPTION
+    Maypole::PSGI is
+
+AUTHOR
+    Tatsuhiko Miyagawa <miyagawa@bulknews.net>
+
+LICENSE
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+
+SEE ALSO
