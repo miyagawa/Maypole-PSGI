@@ -4,7 +4,6 @@ use strict;
 use 5.008_001;
 our $VERSION = '0.01';
 
-package Maypole::PSGI;
 use UNIVERSAL::require;
 
 sub run {
